@@ -1,7 +1,14 @@
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
-import { View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+    SafeAreaView,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from "react-native";
 
 export default function DashboardScreen() {
     const router = useRouter();
@@ -24,8 +31,177 @@ export default function DashboardScreen() {
     return (
         <SafeAreaView style={styles.safeContainer}>
             <View style={styles.header}>
-
+                <TouchableOpacity onPress={handleBackPress}>
+                    <Ionicons name="arrow-back" size={24} color="#1F2937" />
+                </TouchableOpacity>
+                <Text style={styles.headerTitle}>dashboard</Text>
+                <View style={{ width: 24 }} />
             </View>
+
+            <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Blue Section - Greeting & Profile */}
+        <View style={styles.blueSection}>
+          <View style={styles.greetingContainer}>
+            <View>
+              <Text style={styles.greeting}>Hello {username},</Text>
+              <Text style={styles.bookingTitle}>Book your next Flight</Text>
+            </View>
+            <View style={styles.avatarCircle}>
+              <MaterialIcons name="person" size={32} color="#3B82F6" />
+            </View>
+          </View>
+
+          {/* Trip Type Selector */}
+          <View style={styles.tripTypeContainer}>
+            <TouchableOpacity
+              style={[
+                styles.tripTypeButton,
+                tripType === "round" && styles.tripTypeButtonActive,
+              ]}
+              onPress={() => setTripType("round")}
+            >
+              <Text
+                style={[
+                  styles.tripTypeText,
+                  tripType === "round" && styles.tripTypeTextActive,
+                ]}
+              >
+                Round Trip
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[
+                styles.tripTypeButton,
+                tripType === "one" && styles.tripTypeButtonActive,
+              ]}
+              onPress={() => setTripType("one")}
+            >
+              <Text
+                style={[
+                  styles.tripTypeText,
+                  tripType === "one" && styles.tripTypeTextActive,
+                ]}
+              >
+                One way
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[
+                styles.tripTypeButton,
+                tripType === "multi" && styles.tripTypeButtonActive,
+              ]}
+              onPress={() => setTripType("multi")}
+            >
+              <Text
+                style={[
+                  styles.tripTypeText,
+                  tripType === "multi" && styles.tripTypeTextActive,
+                ]}
+              >
+                Multi city
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Form Section */}
+          <View style={styles.formCard}>
+            {/* From Location */}
+            <View style={styles.formGroup}>
+              <Text style={styles.formLabel}>From (Location)</Text>
+              <TextInput
+                style={styles.formInput}
+                value={fromLocation}
+                onChangeText={setFromLocation}
+                placeholderTextColor="#9CA3AF"
+              />
+            </View>
+
+            {/* To Destination */}
+            <View style={styles.formGroup}>
+              <Text style={styles.formLabel}>To (Destination)</Text>
+              <TextInput
+                style={styles.formInput}
+                value={toLocation}
+                onChangeText={setToLocation}
+                placeholderTextColor="#9CA3AF"
+              />
+            </View>
+
+            {/* Date Row */}
+            <View style={styles.dateRowContainer}>
+              <View style={[styles.formGroup, { flex: 1 }]}>
+                <Text style={styles.formLabel}>Departure</Text>
+                <TextInput
+                  style={styles.formInput}
+                  value={departureDate}
+                  onChangeText={setDepartureDate}
+                  placeholderTextColor="#9CA3AF"
+                />
+              </View>
+
+              {tripType === "round" && (
+                <View style={[styles.formGroup, { flex: 1, marginLeft: 12 }]}>
+                  <Text style={styles.formLabel}>Return</Text>
+                  <TextInput
+                    style={styles.formInput}
+                    value={returnDate}
+                    onChangeText={setReturnDate}
+                    placeholderTextColor="#9CA3AF"
+                  />
+                </View>
+              )}
+            </View>
+
+            {/* Search Button */}
+            <TouchableOpacity
+              style={styles.searchButton}
+              onPress={handleSearchFlights}
+            >
+              <Text style={styles.searchButtonText}>Search flights</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Popular Place Section */}
+        <View style={styles.popularSection}>
+          <Text style={styles.sectionTitle}>Popular place</Text>
+
+          <View style={styles.placeCard}>
+            {/* Placeholder for Image */}
+            <View style={styles.imagePlaceholder}>
+              <MaterialIcons name="image" size={48} color="#9CA3AF" />
+            </View>
+
+            {/* Navigation Icons at Bottom */}
+            <View style={styles.placeNavigation}>
+              <TouchableOpacity
+                style={styles.navItem}
+                onPress={handleHomePress}
+              >
+                <Ionicons name="home" size={24} color="#3B82F6" />
+                <Text style={styles.navLabel}>Home</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.navItem}>
+                <MaterialIcons name="folder" size={24} color="#9CA3AF" />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.navItem}>
+                <MaterialIcons name="notifications" size={24} color="#9CA3AF" />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.navItem}>
+                <MaterialIcons name="bookmark" size={24} color="#9CA3AF" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
         </SafeAreaView>
     )
 }
