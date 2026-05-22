@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 
 const abra = () => {
     const [nama, setNama] = useState("");
@@ -13,4 +13,24 @@ const abra = () => {
         }
         Alert.alert("Sukses", `Data Terkirim:\n\nNama: ${nama}\nUsername: ${username}\nPassword: ${password}`);
     };
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>Ini Halaman Form</Text>
+        </View>
+    )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginBottom: 20
+    }
+});
