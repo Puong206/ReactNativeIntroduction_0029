@@ -21,13 +21,7 @@ export default function DashboardScreen() {
   return (
     <SafeAreaView style={styles.safeContainer}>
       {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <MaterialIcons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>dashboard</Text>
-        <View style={{ width: 24 }} />
-      </View>
+      
 
       <ScrollView style={styles.scrollView}>
         {/* Blue Section */}
