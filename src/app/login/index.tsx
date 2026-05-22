@@ -20,12 +20,35 @@ export default function LoginScreen() {
             params: { username: username }
         });
     };
-}
 
-export default function index () {
-  return (
-    
-  )
+    return (
+        <View style={styles.safeContainer}>
+        <View style={styles.container}>
+            <Text style={styles.title}>Selamat Datang</Text>
+            <Text style={styles.text}>Silakan masuk ke akun Anda</Text>
+        </View>
+
+        <View style={styles.formSection}>
+            <View style={styles.inputGroup}>
+                <Text style={styles.text}>Username / Email</Text>
+                <TextInput
+                    style={styles.input}
+                    value={username}
+                    onChangeText={setUsername}
+                />
+            </View>
+            <View style={styles.inputGroup}>
+                <Text style={styles.text}>Password</Text>
+                <TextInput
+                    style={styles.input}
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={true}
+                />
+            </View>
+        </View>
+    </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -44,6 +67,15 @@ const styles = StyleSheet.create({
     },
     inputGroup: {
         marginBottom: 0,
+    },
+    input: {
+        borderBottomWidth: 2,
+        borderBottomColor: "#3B82F6",
+        paddingVertical: 12,
+        paddingHorizontal: 0,
+        fontSize: 16,
+        color: "#1F2937",
+        fontWeight: "500"
     },
     title: {
         fontSize: 24,
