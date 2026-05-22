@@ -1,9 +1,20 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Link } from "expo-router";
+import { Text, View, StyleSheet, TextInput } from "react-native";
 
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
+      <Text>BOO!</Text>
+      
+      <Link href="/contoh">Halaman Contoh</Link>
+
+      //
+      <Text>Ini adalah form nama</Text>
+      <TextInput
+        placeholder="Masukkan Nama Anda"
+      />
+
+      <Link href="/abra">Halaman Anu</Link>
     </View>
   );
 }
