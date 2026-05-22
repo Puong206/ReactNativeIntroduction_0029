@@ -40,13 +40,11 @@ export default function LoginScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
-          {/* Header Section */}
           <View style={styles.headerSection}>
             <Text style={styles.title}>Selamat Datang</Text>
             <Text style={styles.subtitle}>Silakan masuk ke akun Anda</Text>
           </View>
 
-          {/* Form Card */}
           <View style={styles.formCard}>
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Username / Email</Text>
