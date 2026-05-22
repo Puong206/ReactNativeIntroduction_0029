@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function LoginScreen() {
     const [username, setUsername] = useState("");
@@ -46,6 +46,14 @@ export default function LoginScreen() {
                     secureTextEntry={true}
                 />
             </View>
+
+            <TouchableOpacity
+                style={styles.loginButton}
+                onPress={handleLogin}
+                activeOpacity={0.85}
+            >
+                <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
         </View>
     </View>
     )
@@ -87,5 +95,20 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         color: "#555",
+    },
+    loginButton: {
+        backgroundColor: "#3B82F6",
+        paddingVertical: 14,
+        paddingHorizontal: 24,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 16,
+    },
+    loginButtonText: {
+        color: "#FFF",
+        fontSize: 16,
+        fontWeight: "700",
+        letterSpacing: 0.5,
     }
 });
