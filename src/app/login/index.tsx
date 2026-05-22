@@ -16,7 +16,7 @@ export default function LoginScreen() {
         console.log("Login attempt: ", { username, password });
 
         router.push({
-            pathname: "/dashboard/dashboard",
+            pathname: "./dashboard/dashboard",
             params: { username: username }
         });
     };
