@@ -9,10 +9,10 @@ export default function DashboardScreen() {
   const username = params.username || "User";
 
   const [tripType, setTripType] = useState("round");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [departure, setDeparture] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  const [from, setFrom] = useState("New York (NYC)");
+  const [to, setTo] = useState("London (LDN)");
+  const [departure, setDeparture] = useState("Dec 4th, 2021");
+  const [returnDate, setReturnDate] = useState("Dec 16th, 2021");
 
   const handleSearch = () => {
     console.log("Search flights:", { tripType, from, to, departure, returnDate });
@@ -29,7 +29,7 @@ export default function DashboardScreen() {
               <Text style={styles.mainTitle}>Book your next Flight</Text>
             </View>
             <View style={styles.avatarCircle}>
-              <MaterialIcons name="person" size={40} color="#1E88E5" />
+              <MaterialIcons name="person" size={40} color="#FFFFFF" />
             </View>
           </View>
 
@@ -122,28 +122,31 @@ export default function DashboardScreen() {
         <View style={styles.popularSection}>
           <Text style={styles.sectionTitle}>Popular place</Text>
           <Image
-            source={{ uri: "https://via.placeholder.com/400x200?text=Tower+Bridge" }}
+            source={require("../../assets/images/IMG_8537.png")}
             style={styles.placeImage}
           />
         </View>
 
-        {/* Bottom Navigation */}
-        <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navItem}>
-            <MaterialIcons name="home" size={24} color="#1E88E5" />
-            <Text style={styles.navText}>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <MaterialIcons name="search" size={24} color="#999" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <MaterialIcons name="notifications" size={24} color="#999" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <MaterialIcons name="bookmark" size={24} color="#999" />
-          </TouchableOpacity>
-        </View>
+        {/* Spacer for floating navbar */}
+        <View style={{ height: 80 }} />
       </ScrollView>
+
+      {/* Floating Bottom Navigation */}
+      <View style={styles.floatingNav}>
+        <TouchableOpacity style={styles.navItem}>
+          <MaterialIcons name="home" size={24} color="#FF7043" />
+          <Text style={styles.navText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItemIcon}>
+          <MaterialIcons name="folder" size={24} color="#FFC107" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItemIcon}>
+          <MaterialIcons name="notifications" size={24} color="#FDD835" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItemIcon}>
+          <MaterialIcons name="bookmark" size={24} color="#A1887F" />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -151,7 +154,7 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#FFFFFF",
   },
   scrollView: {
     flex: 1,
@@ -160,21 +163,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     paddingVertical: 12,
-    backgroundColor: "#FFF",
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E7EB",
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "600",
-    color: "#000",
+    color: "#1F2937",
   },
   blueSection: {
-    backgroundColor: "#1E88E5",
-    marginHorizontal: 16,
-    marginTop: 16,
-    borderRadius: 16,
-    paddingHorizontal: 16,
+    backgroundColor: "#3B82F6",
+    marginHorizontal: 0,
+    marginTop: 0,
+    marginBottom: 0,
+    borderBottomLeftRadius: 28,
+    borderBottomRightRadius: 28,
+    paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
   },
@@ -188,17 +194,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "rgba(255, 255, 255, 0.8)",
     marginBottom: 4,
+    fontWeight: "500",
   },
   mainTitle: {
     fontSize: 24,
     fontWeight: "700",
-    color: "#FFF",
+    color: "#FFFFFF",
   },
   avatarCircle: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -208,76 +215,81 @@ const styles = StyleSheet.create({
   },
   tripButton: {
     flex: 1,
-    paddingVertical: 8,
+    paddingVertical: 10,
     paddingHorizontal: 12,
     borderRadius: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
     alignItems: "center",
+    justifyContent: "center",
   },
   tripButtonActive: {
-    backgroundColor: "#FFF",
+    backgroundColor: "#FFFFFF",
   },
   tripButtonText: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: "600",
-    color: "#FFF",
+    color: "#FFFFFF",
   },
   tripButtonTextActive: {
-    color: "#1E88E5",
+    color: "#3B82F6",
   },
   formContainer: {
-    backgroundColor: "#FFF",
+    backgroundColor: "#FFFFFF",
     marginHorizontal: 16,
-    marginTop: 16,
+    marginTop: -12,
     marginBottom: 16,
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    elevation: 2,
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    elevation: 4,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+    zIndex: 10,
   },
   formGroup: {
     marginBottom: 16,
   },
   label: {
-    fontSize: 12,
-    color: "#666",
+    fontSize: 13,
+    color: "#6B7280",
     marginBottom: 8,
-    fontWeight: "600",
+    fontWeight: "500",
   },
   input: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#1E88E5",
-    paddingVertical: 8,
-    fontSize: 14,
-    color: "#000",
+    borderWidth: 1,
+    borderColor: "#E5E7EB",
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1F2937",
   },
   dateRow: {
     flexDirection: "row",
   },
   searchButton: {
-    backgroundColor: "#1E88E5",
+    backgroundColor: "#3B82F6",
     paddingVertical: 14,
-    borderRadius: 8,
+    borderRadius: 12,
     alignItems: "center",
     marginTop: 8,
   },
   searchButtonText: {
-    color: "#FFF",
+    color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "700",
   },
   popularSection: {
     paddingHorizontal: 16,
     marginBottom: 16,
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700",
-    color: "#000",
+    color: "#1F2937",
     marginBottom: 12,
   },
   placeImage: {
@@ -289,19 +301,46 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#FFF",
+    backgroundColor: "#FFFFFF",
     paddingVertical: 12,
+    paddingHorizontal: 20,
     borderTopWidth: 1,
-    borderTopColor: "#EEE",
+    borderTopColor: "#E5E7EB",
     marginBottom: 16,
   },
   navItem: {
+    flexDirection: "row",
     alignItems: "center",
-    gap: 4,
+    gap: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  navItemIcon: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 8,
   },
   navText: {
-    fontSize: 10,
-    color: "#1E88E5",
+    fontSize: 13,
+    color: "#FF7043",
     fontWeight: "600",
+  },
+  floatingNav: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    right: 20,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 16,
+    elevation: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
   },
 });
