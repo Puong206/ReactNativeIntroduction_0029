@@ -10,4 +10,12 @@ export default function DashboardScreen() {
     const [toLocation, setToLocation] = useState("London (LDN)");
     const [departureDate, setDepartureDate] = useState("Dec 4th, 2021");
     const [returnDate, setReturnDate] = useState("Dec 16th, 2021");
+
+    const handleBackPress = () => {
+        router.back();
+    };
+
+    const handleHomePress = () => {
+        console.log("Navigate to Home");
+    }
 }
