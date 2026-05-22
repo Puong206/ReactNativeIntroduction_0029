@@ -35,16 +35,10 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>index</Text>
-      </View>
-
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Main Container */}
         <View style={styles.container}>
           {/* Header Section */}
           <View style={styles.headerSection}>
@@ -52,34 +46,27 @@ export default function LoginScreen() {
             <Text style={styles.subtitle}>Silakan masuk ke akun Anda</Text>
           </View>
 
-          {/* Form Section */}
-          <View style={styles.formSection}>
-            {/* Username / Email Input */}
+          {/* Form Card */}
+          <View style={styles.formCard}>
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Username / Email</Text>
               <TextInput
                 style={styles.input}
-                placeholder="abra"
-                placeholderTextColor="#9CA3AF"
                 value={username}
                 onChangeText={setUsername}
               />
             </View>
 
-            {/* Password Input */}
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Password</Text>
               <TextInput
                 style={styles.input}
-                placeholder="••••••••"
-                placeholderTextColor="#9CA3AF"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={true}
               />
             </View>
 
-            {/* Login Button */}
             <TouchableOpacity
               style={styles.loginButton}
               onPress={handleLogin}
@@ -100,19 +87,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
-  header: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#E5E7EB",
-  },
-
-  headerTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1F2937",
-  },
-
   scrollContent: {
     flexGrow: 1,
     justifyContent: "center",
@@ -126,8 +100,7 @@ const styles = StyleSheet.create({
   },
 
   headerSection: {
-    marginBottom: 48,
-    alignItems: "center",
+    marginBottom: 32,
   },
 
   title: {
@@ -135,23 +108,31 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#1E40AF",
     marginBottom: 8,
-    textAlign: "center",
+    textAlign: "left",
   },
 
   subtitle: {
     fontSize: 14,
     fontWeight: "400",
     color: "#6B7280",
-    textAlign: "center",
+    textAlign: "left",
   },
 
-  formSection: {
-    width: "100%",
-    gap: 32,
+  /* ============ Form Card ============ */
+  formCard: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
 
   inputGroup: {
-    marginBottom: 0,
+    marginBottom: 24,
   },
 
   label: {
