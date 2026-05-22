@@ -20,9 +20,6 @@ export default function DashboardScreen() {
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      {/* Header */}
-      
-
       <ScrollView style={styles.scrollView}>
         {/* Blue Section */}
         <View style={styles.blueSection}>
